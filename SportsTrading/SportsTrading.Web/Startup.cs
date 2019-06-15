@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,8 @@ namespace SportsTrading.Web
                 .AddDbContext<SportsTradingDbContext>((serviceProvider, options) =>
                     options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"))
                         .UseInternalServiceProvider(serviceProvider));
+
+            services.AddAutoMapper();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
