@@ -5,17 +5,15 @@ namespace SportsTrading.Data
 {
     public class SportsTradingDbContext : DbContext
     {
+        public SportsTradingDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<Sport> Sports { get; set; }
 
         public DbSet<League> Leagues { get; set; }
 
         public DbSet<Event> Events { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=.;Database=SportsTrading;Trusted_Connection=True");
-            base.OnConfiguring(optionsBuilder);
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
