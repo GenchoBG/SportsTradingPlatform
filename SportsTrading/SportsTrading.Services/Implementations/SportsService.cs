@@ -38,6 +38,11 @@ namespace SportsTrading.Services.Implementations
 
         public async Task<int> GetCount(string search)
         {
+            if (string.IsNullOrEmpty(search))
+            {
+                return await this.db.Events.CountAsync();
+            }
+
             return await this.db.Events
                 .CountAsync(e => e.Name.Contains(search, StringComparison.InvariantCultureIgnoreCase)
                                  || e.Sport.Name.Contains(search, StringComparison.InvariantCultureIgnoreCase)

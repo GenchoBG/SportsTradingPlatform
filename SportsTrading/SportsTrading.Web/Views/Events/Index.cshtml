@@ -5,22 +5,22 @@
 
 <table>
     <thead>
-    <tr>
-        <td>Name</td>
-        <td>Sport</td>
-        <td>League</td>
-    </tr>
+        <tr>
+            <td>Name</td>
+            <td>Sport</td>
+            <td>League</td>
+        </tr>
     </thead>
-    <tbody id="messagesBody">
-        
-    </tbody>
+    <tbody id="messagesBody"></tbody>
 </table>
 
-<br/>
+<br />
 <p id="pageCount" style="color: white">Page: ?/?</p>
 <button id="prevButton" disabled>Prev</button>
 <button id="nextButton" disabled>Next</button>
+<input id="searchText" type="text" />
+<button id="searchButton" onclick="searchUpdate()">Search</button>
 
-@section Scripts{ 
+@section Scripts{
     <script src="~/js/event.js"></script>
 }
