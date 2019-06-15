@@ -1,7 +1,7 @@
 ﻿let eventsCount;
 let perPage = 20;
 let currentPage = 0;
-let search = "Herto";
+let search;
 
 $(window).on("load", function () {
     loadEvents(currentPage, search, perPage);
@@ -22,6 +22,20 @@ function checkButtons() {
     }
 }
 
+function searchUpdate() {
+    $("#searchButton").attr("disabled", true);
+    search = $("#searchText").val();
+    currentPage = 0;
+
+    new Promise((resolve) => {
+        loadEvents(currentPage, search, perPage);
+        getEventsCount(search);
+        resolve();
+    }).then(function() {
+        $("#searchButton").removeAttr("disabled");
+    });
+}
+
 function getEventsCount(search) {
     $.ajax({
         url: '/Events/GetEventsCount' + getUrlAttributes(null, search, null),
@@ -31,12 +45,16 @@ function getEventsCount(search) {
             eventsCount = count;
             $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
             $("#nextButton").removeAttr("disabled");
-            $("#nextButton").on("click", function () {
+            $("#nextButton").unbind("click");
+            $("#nextButton").bind("click", function (e) {
+                e.preventDefault();
+                console.log("next");
                 currentPage++;
                 loadEvents(currentPage, search, perPage);
                 $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
                 checkButtons();
             });
+            $("#prevButton").unbind("click");
             $("#prevButton").removeAttr("disabled");
             $("#prevButton").on("click", function () {
                 currentPage--;
