@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SportsTrading.Web.Models;
+using System.Diagnostics;
 
 namespace SportsTrading.Web.Controllers
 {
