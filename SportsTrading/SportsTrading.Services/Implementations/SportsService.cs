@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using SportsTrading.Data;
+﻿using SportsTrading.Data;
 using SportsTrading.Data.Models;
 using SportsTrading.Services.Interfaces;
+using System;
+using System.Linq;
 
 namespace SportsTrading.Services.Implementations
 {
@@ -17,7 +17,7 @@ namespace SportsTrading.Services.Implementations
 
         public IQueryable<Event> GetEvents(int page = 0, string search = "", int eventsPerPage = 20)
         {
-            var eventsQuery = this.db.Events.AsQueryable();
+            IQueryable<Event> eventsQuery = this.db.Events.AsQueryable();
 
             if (search != "")
             {

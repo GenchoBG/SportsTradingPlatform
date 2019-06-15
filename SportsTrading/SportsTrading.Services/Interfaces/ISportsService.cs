@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using SportsTrading.Data.Models;
+﻿using SportsTrading.Data.Models;
+using System.Linq;
 
 namespace SportsTrading.Services.Interfaces
 {

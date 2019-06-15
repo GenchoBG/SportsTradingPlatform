@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Linq;
-using AutoMapper;
 
 namespace SportsTrading.Web.Infrastructure.Mapper
 {
@@ -8,7 +8,7 @@ namespace SportsTrading.Web.Infrastructure.Mapper
     {
         public AutoMapperProfile()
         {
-            var types = AppDomain
+            System.Collections.Generic.List<Type> types = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
                 .Where(a => a.GetName().Name.Contains(nameof(SportsTrading)))
@@ -39,7 +39,7 @@ namespace SportsTrading.Web.Infrastructure.Mapper
                 this.CreateMap(mapping.Source, mapping.Destination);
             }
 
-            var customMappings = types
+            System.Collections.Generic.List<ICustomMapping> customMappings = types
                 .Where(t => t.IsClass &&
                             !t.IsAbstract &&
                             typeof(ICustomMapping).IsAssignableFrom(t))
@@ -47,7 +47,7 @@ namespace SportsTrading.Web.Infrastructure.Mapper
                 .Cast<ICustomMapping>()
                 .ToList();
 
-            foreach (var customMapping in customMappings)
+            foreach (ICustomMapping customMapping in customMappings)
             {
                 customMapping.ConfigureMapping(this);
             }
