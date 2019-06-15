@@ -15,13 +15,13 @@ namespace SportsTrading.Data.Models
         public int SportId { get; set; }
 
         [Required]
-        [ForeignKey("SportId")]
+        [ForeignKey(nameof(SportId))]
         public Sport Sport { get; set; }
 
         public int LeagueId { get; set; }
 
         [Required]
-        [ForeignKey("LeagueId")]
+        [ForeignKey(nameof(LeagueId))]
         public League League { get; set; }
 
         public int HomeTeamScore { get; set; }

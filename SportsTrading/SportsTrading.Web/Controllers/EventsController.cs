@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SportsTrading.Services.Implementations;
+using SportsTrading.Services.Interfaces;
 using SportsTrading.Web.Models;
 
 namespace SportsTrading.Web.Controllers

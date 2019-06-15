@@ -15,7 +15,7 @@ namespace SportsTrading.Data.Models
         public int SportId { get; set; }
 
         [Required]
-        [ForeignKey("SportId")]
+        [ForeignKey(nameof(SportId))]
         public Sport Sport { get; set; }
     }
 }
