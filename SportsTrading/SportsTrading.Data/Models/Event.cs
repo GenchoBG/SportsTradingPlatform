@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportsTrading.Data.Models
 {
@@ -14,11 +15,13 @@ namespace SportsTrading.Data.Models
         public int SportId { get; set; }
 
         [Required]
+        [ForeignKey("SportId")]
         public Sport Sport { get; set; }
 
         public int LeagueId { get; set; }
 
         [Required]
+        [ForeignKey("LeagueId")]
         public League League { get; set; }
 
         public int HomeTeamScore { get; set; }
