@@ -11,6 +11,10 @@
 
   <ItemGroup>
     <None Include="sport-events.json" />
+    <None Include="wwwroot\lib\materialize\js\materialize.js" />
+    <None Include="wwwroot\lib\materialize\js\materialize.min.js" />
+    <None Include="wwwroot\lib\materialize\LICENSE" />
+    <None Include="wwwroot\lib\materialize\README.md" />
   </ItemGroup>
 
 
