@@ -2,9 +2,9 @@
 using System.Linq;
 using SportsTrading.Data;
 using SportsTrading.Data.Models;
-using SportsTrading.Services.Implementations;
+using SportsTrading.Services.Interfaces;
 
-namespace SportsTrading.Services.Interfaces
+namespace SportsTrading.Services.Implementations
 {
     public class SportsService : ISportsService
     {

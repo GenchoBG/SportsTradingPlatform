@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using SportsTrading.Data.Models;
 
-namespace SportsTrading.Services.Implementations
+namespace SportsTrading.Services.Interfaces
 {
     public interface ISportsService
     {
