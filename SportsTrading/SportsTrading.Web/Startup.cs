@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportsTrading.Data;
+using SportsTrading.Services.Implementations;
+using SportsTrading.Services.Interfaces;
 using SportsTrading.Web.Infrastructure.Extensions;
 
 namespace SportsTrading.Web
@@ -37,6 +39,8 @@ namespace SportsTrading.Web
                         .UseInternalServiceProvider(serviceProvider));
 
             services.AddAutoMapper();
+
+            services.AddTransient<ISportsService, SportsService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
