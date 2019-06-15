@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore" Version="2.2.4" />
     <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="2.2.4" />
     <PackageReference Include="microsoft.entityframeworkcore.tools" Version="2.2.4">
