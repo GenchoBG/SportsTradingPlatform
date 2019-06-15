@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +18,7 @@ namespace SportsTrading.Web.Infrastructure.Extensions
     {
         public static IApplicationBuilder Seed(this IApplicationBuilder app)
         {
-            string jsonPath = @"C:\Users\Kalin\Desktop\sport-events-backup.json";
+            string jsonPath = @"sport-events.json";
             string json = File.ReadAllText(jsonPath);
             List<Event> events = JsonConvert.DeserializeObject<List<Event>>(json);
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
