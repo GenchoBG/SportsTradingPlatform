@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportsTrading.Data;
+using SportsTrading.Services.Implementations;
+using SportsTrading.Services.Interfaces;
 using SportsTrading.Web.Infrastructure.Extensions;
 
 namespace SportsTrading.Web
@@ -34,6 +37,10 @@ namespace SportsTrading.Web
                 .AddDbContext<SportsTradingDbContext>((serviceProvider, options) =>
                     options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"))
                         .UseInternalServiceProvider(serviceProvider));
+
+            services.AddAutoMapper();
+
+            services.AddTransient<ISportsService, SportsService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
