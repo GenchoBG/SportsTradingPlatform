@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using AutoMapper.QueryableExtensions;
+﻿using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SportsTrading.Services.Implementations;
+using SportsTrading.Services.Interfaces;
 using SportsTrading.Web.Models;
+using System.Threading.Tasks;
 
 namespace SportsTrading.Web.Controllers
 {
@@ -18,7 +18,7 @@ namespace SportsTrading.Web.Controllers
 
         public async Task<IActionResult> Index(int page = 0, string search = "", int eventsPerPage = 20)
         {
-            var events = await this.sportsService
+            System.Collections.Generic.List<EventViewModel> events = await this.sportsService
                 .GetEvents(page, search, eventsPerPage)
                 .ProjectTo<EventViewModel>()
                 .ToListAsync();
