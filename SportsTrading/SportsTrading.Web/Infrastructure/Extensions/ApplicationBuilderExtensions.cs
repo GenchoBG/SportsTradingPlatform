@@ -31,7 +31,16 @@ namespace SportsTrading.Web.Infrastructure.Extensions
                     {
                         if (!await db.Sports.AnyAsync())
                         {
-                            // download data & fill up the database
+                            foreach (Event @event in events)
+                            {
+                                Event tmp = @event;
+                                tmp.Id = 0;
+                                tmp.Sport.Id = 0;
+                                tmp.League.Id = 0;
+                                tmp.League.SportId = 0;
+                                db.Add(tmp);
+                            }
+                            db.SaveChanges();
                         }
 
                     })
