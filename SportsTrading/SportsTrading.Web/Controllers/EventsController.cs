@@ -29,9 +29,9 @@ namespace SportsTrading.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEventsCount(string search, int page, int eventsPerPage = 20)
+        public async Task<IActionResult> GetEventsCount(string search)
         {
-            return this.Json(await this.sportsService.GetEvents(page, search, eventsPerPage).ProjectTo<EventListViewModel>().CountAsync());
+            return this.Json(await this.sportsService.GetCount(search));
         }
     }
 }
