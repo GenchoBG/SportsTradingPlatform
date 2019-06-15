@@ -15,11 +15,11 @@ namespace SportsTrading.Services.Implementations
             this.db = db;
         }
 
-        public IQueryable<Event> GetEvents(int page = 0, string search = "", int eventsPerPage = 20)
+        public IQueryable<Event> GetEvents(int page, string search, int eventsPerPage)
         {
             IQueryable<Event> eventsQuery = this.db.Events.AsQueryable();
 
-            if (search != "")
+            if (!string.IsNullOrEmpty(search))
             {
                 eventsQuery =
                     eventsQuery.Where(e => e.Name.Contains(search, StringComparison.InvariantCultureIgnoreCase)
