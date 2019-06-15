@@ -16,14 +16,22 @@ namespace SportsTrading.Web.Controllers
             this.sportsService = sportsService;
         }
 
-        public async Task<IActionResult> Index(int page = 0, string search = "", int eventsPerPage = 20)
+        [HttpGet]
+        public IActionResult Index()
         {
-            System.Collections.Generic.List<EventViewModel> events = await this.sportsService
-                .GetEvents(page, search, eventsPerPage)
-                .ProjectTo<EventViewModel>()
-                .ToListAsync();
+            return this.View();
+        }
 
-            return this.View(events);
+        [HttpGet]
+        public async Task<IActionResult> GetEvents(string search, int page, int eventsPerPage = 20)
+        {
+            return this.Json(await this.sportsService.GetEvents(page, search, eventsPerPage).ProjectTo<EventListViewModel>().ToListAsync());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEventsCount(string search, int page, int eventsPerPage = 20)
+        {
+            return this.Json(await this.sportsService.GetEvents(page, search, eventsPerPage).ProjectTo<EventListViewModel>().CountAsync());
         }
     }
 }

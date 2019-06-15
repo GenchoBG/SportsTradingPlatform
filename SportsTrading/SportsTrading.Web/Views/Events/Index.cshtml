@@ -1,26 +1,26 @@
-﻿@model IEnumerable<EventViewModel>
+﻿@model IEnumerable<EventListViewModel>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <table>
     <thead>
-        <tr>
-            <td>Name</td>
-            <td>Sport</td>
-            <td>League</td>
-        </tr>
+    <tr>
+        <td>Name</td>
+        <td>Sport</td>
+        <td>League</td>
+    </tr>
     </thead>
-    <tbody>
-        @foreach (var eventViewModel in Model)
-        {
-            <tr>
-                <td>@eventViewModel.Name</td>
-                <td>@eventViewModel.SportName</td>
-                <td>@eventViewModel.LeagueName</td>
-            </tr>
-        }
+    <tbody id="messagesBody">
+        
     </tbody>
 </table>
+
+<br/>
+<p id="pageCount" style="color: white">Page: ?/?</p>
+<button id="prevButton" disabled>Prev</button>
+<button id="nextButton" disabled>Next</button>
+
+@section Scripts{ 
+    <script src="~/js/event.js"></script>
+}

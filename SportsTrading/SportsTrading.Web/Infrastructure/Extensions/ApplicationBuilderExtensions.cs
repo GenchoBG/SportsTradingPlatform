@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using SportsTrading.Data;
-using SportsTrading.Data.Models;
-using SportsTrading.Web.Infrastructure.Serialization;
 
 namespace SportsTrading.Web.Infrastructure.Extensions
 {

@@ -4,7 +4,7 @@ using SportsTrading.Web.Infrastructure.Mapper;
 
 namespace SportsTrading.Web.Models
 {
-    public class EventViewModel : ICustomMapping
+    public class EventListViewModel : ICustomMapping
     {
         public int Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace SportsTrading.Web.Models
         public void ConfigureMapping(Profile profile)
         {
             profile
-                .CreateMap<Event, EventViewModel>()
+                .CreateMap<Event, EventListViewModel>()
                 .ForMember(m => m.LeagueName, opts => opts.MapFrom(e => e.League.Name))
                 .ForMember(m => m.SportName, opts => opts.MapFrom(e => e.Sport.Name));
         }
