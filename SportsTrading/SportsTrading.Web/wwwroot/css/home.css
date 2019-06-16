@@ -2,6 +2,10 @@
     scroll-behavior: smooth;
 }
 
+html {
+    height: 90%;
+}
+
 .page-wrapper {
     z-index: 0;
     width: 100%;
