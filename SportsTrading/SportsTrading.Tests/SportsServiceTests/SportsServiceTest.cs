@@ -12,6 +12,8 @@ namespace SportsTrading.Tests.SportsServiceTests
     {
         protected ISportsService SportService { get; set; }
 
+        private SportsTradingDbContext DbContext { get; }
+
         protected IList<Event> Events { get; set; }
 
         protected IList<Sport> Sports { get; set; }
@@ -20,7 +22,7 @@ namespace SportsTrading.Tests.SportsServiceTests
         
         protected SportsServiceTest()
         {
-            var db = this.GetDbContext();
+            this.DbContext = this.GetDbContext();
 
             this.Sports = new List<Sport>()
             {
@@ -29,8 +31,8 @@ namespace SportsTrading.Tests.SportsServiceTests
                 new Sport() { Name = "Minavane v 12ti klas TUES" },
             };
 
-            db.Sports.AddRange(this.Sports);
-            db.SaveChanges();
+            this.DbContext.Sports.AddRange(this.Sports);
+            this.DbContext.SaveChanges();
 
             this.Leagues = new List<League>()
             {
@@ -39,8 +41,8 @@ namespace SportsTrading.Tests.SportsServiceTests
                 new League() { Name = "TUES 2018/2019", Sport = this.Sports[2] }
             };
 
-            db.Leagues.AddRange(this.Leagues);
-            db.SaveChanges();
+            this.DbContext.Leagues.AddRange(this.Leagues);
+            this.DbContext.SaveChanges();
 
             this.Events = new List<Event>()
             {
@@ -49,10 +51,10 @@ namespace SportsTrading.Tests.SportsServiceTests
                 new Event() { AwayTeamScore = 1000, AwayTeamOdds = 1000, Date = DateTime.Now, HomeTeamOdds = 0, HomeTeamScore = 0, DrawOdds = 0, League = this.Leagues[2], Sport = this.Sports[2], Name = "Vsichki vs Gocev" },
             };
 
-            db.Events.AddRange(this.Events);
-            db.SaveChanges();
+            this.DbContext.Events.AddRange(this.Events);
+            this.DbContext.SaveChanges();
 
-            this.SportService = new SportsService(db);
+            this.SportService = new SportsService(this.DbContext);
         }
 
         private SportsTradingDbContext GetDbContext()
