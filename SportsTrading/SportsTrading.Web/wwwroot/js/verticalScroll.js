@@ -5,13 +5,6 @@ var navHeight = 0;
 var scrollTop = false;
 
 $(window).on("load", function () {
-    $(".fixed-action-btn").append(`<ul>
-                                        <li>
-                                            <a id="scrollToTop" title="Back to top" class="btn-floating waves-effect waves-light light-blue darken-1" onclick="scrollToHome()" style="opacity: 1">
-                                                <i class="material-icons">keyboard_arrow_up</i>
-                                            </a>
-                                        </li>
-                                    </ul>`);
 
     navHeight = $("nav").height();
     var height = $(window).height() - navHeight;
