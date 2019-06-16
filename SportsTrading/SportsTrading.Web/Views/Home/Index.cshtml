@@ -2,7 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link type="text/css" rel="stylesheet" href="~/css/home.css" />
+<div class="page-wrapper">
+    <div class="page" id="page1">
+        <h1>About</h1>
+        <img class="arrow" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
+    </div>
+
+    <div class="page" id="page2">
+        <h1>Why</h1>
+        <img class="arrow" src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-128.png" />
+    </div>
+
+    <div class="page" id="page3">
+        <h1>nz</h1>
+    </div>
 </div>
+
+@section Scripts
+    {
+    <script type="text/javascript" src="~/js/verticalScroll.js"></script>
+}
