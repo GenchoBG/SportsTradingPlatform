@@ -70,23 +70,23 @@ i, ion-icon {
     color: #5e35b1;
 }
 
-    .tabs.tabs-deep-purple .tab a:active {
-        color: #5e35b1;
-    }
+.tabs.tabs-deep-purple .tab a:active {
+    color: #5e35b1;
+}
 
-    .tabs.tabs-deep-purple .tab a:hover {
-        color: rgba(94, 53, 177, 0.5);
-    }
+.tabs.tabs-deep-purple .tab a:hover {
+    color: rgba(94, 53, 177, 0.5);
+}
 
-    .tabs.tabs-deep-purple .tab a.active {
-        color: rgba(94, 53, 177, 1);
-        background-color: rgba(94, 53, 177, 0.1) !important;
-    }
+.tabs.tabs-deep-purple .tab a.active {
+    color: rgba(94, 53, 177, 1);
+    background-color: rgba(94, 53, 177, 0.1) !important;
+}
 
-    .tabs.tabs-deep-purple .tab a:focus.active {
-        color: rgba(94, 53, 177, 1);
-        background-color: rgba(94, 53, 177, 0.1) !important;
-    }
+.tabs.tabs-deep-purple .tab a:focus.active {
+    color: rgba(94, 53, 177, 1);
+    background-color: rgba(94, 53, 177, 0.1) !important;
+}
 
 .tabs.tabs-deep-purple .indicator {
     background-color: #5e35b1;

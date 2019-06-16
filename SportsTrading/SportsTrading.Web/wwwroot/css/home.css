@@ -80,7 +80,18 @@ h2, p{
 
 .icons ul li{
     flex: 1 1 10rem;
+}
+
+.icons ul {
     animation: fade-animation ease 1s;
+}
+
+.icons ul li:nth-child(2) {
+    animation: fade-animation ease 1s;
+}
+
+.icons ul li:last-child {
+    animation: fade-animation ease 2s;
 }
 
 .icons ul li i {
