@@ -45,11 +45,14 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - SportsTradingPlatform.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="page-footer deep-purple darken-1">
+        <div class="footer-copyright">
+            <div class="container">
+                © @DateTime.Now.Year &ndash; SportsTradingPlatform
+            </div>
         </div>
     </footer>
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -38,21 +38,24 @@ function loadStatistics() {
 }
 
 function checkButtons() {
-    $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(eventsCount / perPage)}`);
+    $("#pageCount").text(`Page ${currentPage + 1} of ${Math.ceil(eventsCount / perPage)}`);
+    createPageButtons();
 
     if (currentPage == 0) {
-        $("#prevButton").attr("disabled", "disabled");
+        $("#prevButton").parent().addClass("disabled");
+        $("#prevButton").parent().removeClass("waves-effect");
+        $("#prevButton").unbind("click");
     } else {
-        $("#prevButton").removeAttr("disabled");
+        $("#prevButton").parent().removeClass("disabled");
+        $("#prevButton").parent().addClass("waves-effect");
     }
 
     if (currentPage + 1 == Math.ceil(eventsCount / perPage)) {
-        $("#nextButton").attr("disabled", "disabled");
+        $("#nextButton").parent().addClass("disabled");
+        $("#nextButton").unbind("click");
     } else {
-        $("#nextButton").removeAttr("disabled");
+        $("#nextButton").parent().removeClass("disabled");
     }
-
-    createPageButtons();
 }
 
 function searchUpdate() {
@@ -76,23 +79,8 @@ function getEventsCount(search) {
         success: function (count) {
             console.log(count);
             eventsCount = count;
-            
-            $("#nextButton").removeAttr("disabled");
-            $("#nextButton").unbind("click");
-            $("#nextButton").bind("click", function (e) {
-                e.preventDefault();
-                console.log("next");
-                currentPage++;
-                loadEvents(currentPage, search, perPage);
-                checkButtons();
-            });
-            $("#prevButton").unbind("click");
-            $("#prevButton").removeAttr("disabled");
-            $("#prevButton").on("click", function () {
-                currentPage--;
-                loadEvents(currentPage, search, perPage);
-                checkButtons();
-            });
+            createPageButtons();
+
             checkButtons();
         },
         error: function (err) {
@@ -101,18 +89,49 @@ function getEventsCount(search) {
     });
 }
 
+function bindButtons() {
+    $("#nextButton").parent().removeClass("disabled");
+    $("#nextButton").unbind("click");
+    $("#nextButton").bind("click", function (e) {
+        e.preventDefault();
+        console.log("'helooooo");
+        currentPage++;
+        loadEvents(currentPage, search, perPage);
+        checkButtons();
+    });
+    $("#prevButton").unbind("click");
+    $("#prevButton").parent().removeClass("disabled");
+    $("#prevButton").on("click", function (e) {
+        e.preventDefault();
+        console.log("'helooooo");
+        currentPage--;
+        loadEvents(currentPage, search, perPage);
+        checkButtons();
+    });
+}
+
 function createPageButtons() {
     $("#pageNumbers").html('');
+    $('#pageNumbers').append($('<li class="disabled">').append('<a id="prevButton"><i class="material-icons">chevron_left</i></a>'));
     let buttons = [];
     let pagesCount = Math.ceil(eventsCount / perPage);
     for (let i = 0; i < pagesCount; i++) {
-        buttons.push($(`<button>`).text(i + 1).on("click", function () {
-            currentPage = i;
-            loadEvents(currentPage, search, perPage);
-            checkButtons();
-        }));
+        let button = $('<li>').append(
+            $(`<a>`).text(i + 1).on("click", function () {
+                currentPage = i;
+                loadEvents(currentPage, search, perPage);
+                checkButtons();
+            }));
+
+        if (i === currentPage) {
+            button.addClass('active deep-purple darken-1');
+        } else {
+            button.addClass('waves-effect');
+        }
+
+        buttons.push(button);
     }
-    console.log(buttons);
+
 
     if (buttons.length <= maxButtons) {
         for (var button of buttons) {
@@ -138,6 +157,7 @@ function createPageButtons() {
             }
         }
 
+
         for (let button of middleButtons) {
             $("#pageNumbers").append(button);
         }
@@ -148,7 +168,10 @@ function createPageButtons() {
         for (let i = pagesCount - maxButtons / 3; i < pagesCount; i++) {
             $("#pageNumbers").append(buttons[i]);
         }
+        $('#pageNumbers').append($('<li class="waves-effect">').append('<a id="nextButton"><i class="material-icons">chevron_right</i></a>'));
     }
+
+    bindButtons();
 }
 
 function getUrlAttributes(page, search, perPage) {
@@ -179,9 +202,9 @@ function appendEvents(messages) {
             .append($('<tr>')
                 .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
-                .append($("<td>").text(dateBeautify(message.date))
+                .append($("<td>").text(dateBeautify(message.date)))
                 .append($("<td>").text(message.leagueName))
-            ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
+            ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";");
     }
 }
 
