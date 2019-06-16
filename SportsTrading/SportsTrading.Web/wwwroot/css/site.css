@@ -91,32 +91,3 @@ i, ion-icon {
 .tabs.tabs-deep-purple .indicator {
     background-color: #5e35b1;
 }
-
-/* Details page style
--------------------------------------------------- */
-
-.parent {
-    display: flex;
-    align-items: center;
-}
-
-.event-name {
-    flex: 1;
-}
-
-.odds-text {
-    margin-left:20%;
-    margin-right:20%;
-}
-
-.event-name, .sport-name {
-    font-size: 35px;
-}
-
-.score, .odds {
-    font-size: 30px;
-}
-
-.event-details {
-    text-align:center;
-}
