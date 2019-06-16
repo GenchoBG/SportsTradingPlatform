@@ -3,10 +3,6 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    $('.sidenav').sidenav();
-    $('.fixed-action-btn').floatingActionButton();
-    $('.modal').modal();
-
     $("#changeFormat").bind("click", function () {
         let current = getCookie("format");
         if (current == "american") {
@@ -15,6 +11,10 @@ $(document).ready(function () {
             document.cookie = "format=american";
         }
     });
+
+    $('.sidenav').sidenav();
+    $('.fixed-action-btn').floatingActionButton();
+    $('.modal').modal();
 });
 
 function getCookie(cname) {

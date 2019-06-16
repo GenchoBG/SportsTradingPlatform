@@ -1,5 +1,5 @@
 ﻿let eventsCount;
-let perPage = 5;
+let perPage = 20;
 let currentPage = 0;
 let search;
 const maxButtons = 9;
