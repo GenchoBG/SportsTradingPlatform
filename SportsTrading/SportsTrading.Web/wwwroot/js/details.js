@@ -1,8 +1,8 @@
-﻿function addGraph(chartNumber, homeTeamOdds, awayTeamOdds, drawOdds) {
+﻿function addGraph(chartNumber, homeTeamOdds, drawOdds, awayTeamOdds) {
     new Chartist.Bar(`.ct-chart${chartNumber}`, {
-        labels: ['Home Team Odds', 'Away Team Odds', 'Draw Odds'],
+        labels: ['Home Team Odds', 'Draw Odds', 'Away Team Odds'],
         series: [
-            [homeTeamOdds, awayTeamOdds, drawOdds]
+            [homeTeamOdds, drawOdds, awayTeamOdds]
         ]
     }/*, {
             axisY: {
