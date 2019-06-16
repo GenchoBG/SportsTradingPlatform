@@ -51,8 +51,9 @@ namespace SportsTrading.Web.Controllers
         public async Task<IActionResult> GetEventsPerLeagueStatistics()
         {
             return this.Json(await this.sportsService.GetEvents()
-                                    .GroupBy(e => e.League.Name)
-                                    .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
+                .GroupBy(e => e.League.Name)
+                .OrderByDescending(g => g.Key)
+                .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
         }
 
         [HttpGet]
@@ -61,6 +62,7 @@ namespace SportsTrading.Web.Controllers
         {
             return this.Json(await this.sportsService.GetEvents()
                 .GroupBy(e => e.Sport.Name)
+                .OrderByDescending(g => g.Key)
                 .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
         }
 
