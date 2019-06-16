@@ -136,3 +136,8 @@ i, ion-icon {
     height: 41vh;
     margin-bottom: 1rem;
 }
+
+#eventsPerSport, #eventsPerLeague {
+    height: 400px;
+    overflow-y: auto;
+}

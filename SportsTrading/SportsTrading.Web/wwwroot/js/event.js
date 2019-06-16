@@ -262,6 +262,8 @@ function loadEvents(page, search, perPage) {
 }
 
 function loadDataInCard() {
+    $('#eventsPerSport').empty();
+    $('#eventsPerLeague').empty();
     let list = $('<ul>');
     for (let key in eventsPerSport) {
         list.append($('<li>').text(`${key}: ${eventsPerSport[key]}`));
