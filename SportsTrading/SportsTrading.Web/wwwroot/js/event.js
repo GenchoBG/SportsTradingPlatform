@@ -93,12 +93,39 @@ function getUrlAttributes(page, search, perPage) {
 function appendEvents(messages) {
     $("#messagesBody").html("");
     for (let message of messages) {
+        let icon = getIcon(message.sportName);
         $("#messagesBody")
             .append($('<tr>')
+                .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
+                .append($("<td>").append($('<a>').attr('href', `/Events/Details/${message.id}`).text(message.name)))
                 .append($("<td>").text(message.sportName))
                 .append($("<td>").text(message.leagueName)));
     }
+}
+
+function getIcon(sport) {
+    switch (sport) {
+        case 'Soccer':
+            return '<i class="far fa-futbol"></i>';
+        case 'BasketBall':
+            return '<i class="fas fa-basketball-ball"></i>';
+        case 'Tennis':
+            return '<ion-icon name="tennisball"></ion-icon>';
+        case 'Baseball':
+            return '<i class="fas fa-baseball-ball"></i>';
+        case 'Ice Hockey':
+            return '<i class="fas fa-hockey-puck"></i>';
+        case 'Golf':
+            return '<i class="fas fa-golf-ball"></i>';
+        case 'Volleyball':
+            return '<i class="fas fa-volleyball-ball"></i>';
+        case 'Table Tennis':
+            return '<i class="fas fa-table-tennis"></i>';
+        case 'E-Sports':
+            return '<i class="fas fa-gamepad"></i>';
+    }
+    return 'a';
 }
 
 function loadEvents(page, search, perPage) {
