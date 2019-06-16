@@ -7,7 +7,7 @@ var scrollTop = false;
 $(window).on("load", function () {
     $(".fixed-action-btn").append(`<ul>
                                         <li>
-                                            <a id="scrollToTop" class="btn-floating waves-effect waves-light light-blue darken-1" onclick="scrollToHome()" style="opacity: 1">
+                                            <a id="scrollToTop" title="Back to top" class="btn-floating waves-effect waves-light light-blue darken-1" onclick="scrollToHome()" style="opacity: 1">
                                                 <i class="material-icons">keyboard_arrow_up</i>
                                             </a>
                                         </li>
@@ -20,7 +20,6 @@ $(window).on("load", function () {
     $("#scrollToTop").hide();
 
     max_pages = $(".page-wrapper").children().length;
-
     $(".page").bind("mousewheel", scrollToPage());
 });
 
@@ -75,7 +74,7 @@ function scrollToHome() {
 
     console.log("top");
     $('.page-wrapper').animate({
-        scrollTop: $("#page" + current_page).offset().top
+        scrollTop: $("#page" + current_page).offset().top - navHeight
     }, 1000, 'swing', function () {
         $(".page").bind("mousewheel", scrollToPage());
         });

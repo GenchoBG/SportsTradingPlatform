@@ -26,6 +26,12 @@ namespace SportsTrading.Web.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// Gets a number of events based on a search string and a page number
+        /// </summary>
+        /// <param name="search">The search string</param>   
+        /// <param name="page">The page which to take (skip (page * eventsPerPage) elements)</param>    
+        /// <param name="eventsPerPage">How many events should a page contain</param>
         [HttpGet]
         [ResponseCache(VaryByQueryKeys = new[] { "search", "page", "eventsPerPage" }, Duration = 30)]
         public async Task<IActionResult> GetEvents(string search, int page, int eventsPerPage = 20)
@@ -56,6 +62,11 @@ namespace SportsTrading.Web.Controllers
             return this.Json(await this.sportsService.GetEvents()
                 .GroupBy(e => e.Sport.Name)
                 .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
+        }
+
+        public IActionResult Stats()
+        {
+            return this.View();
         }
 
         [HttpGet]

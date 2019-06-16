@@ -1,4 +1,4 @@
-﻿@model EventDetailsViewModel
+﻿    @model EventDetailsViewModel
 @{
     ViewData["Title"] = "Details";
 }
@@ -21,13 +21,13 @@
         </section>
         <section class="odds">
             <div>
-                <span>@Model.HomeTeamOdds</span><span class="odds-text">Odds</span><span>@Model.AwayTeamOdds</span>
+                <span id="homeOdds">@Model.HomeTeamOdds</span><span class="odds-text">Odds</span><span id="awayOdds">@Model.AwayTeamOdds</span>
             </div>
             <div>
                 <span>Draw Odds</span>
             </div>
             <div>
-                <span>@Model.DrawOdds</span>
+                <span id="drawOdds">@Model.DrawOdds</span>
             </div>
         </section>
         <div class="ct-chart@{ @Model.Id }"></div>
