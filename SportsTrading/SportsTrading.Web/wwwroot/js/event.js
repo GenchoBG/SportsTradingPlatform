@@ -38,6 +38,8 @@ function loadStatistics() {
 }
 
 function checkButtons() {
+    $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(eventsCount / perPage)}`);
+
     if (currentPage == 0) {
         $("#prevButton").attr("disabled", "disabled");
     } else {
@@ -74,7 +76,7 @@ function getEventsCount(search) {
         success: function (count) {
             console.log(count);
             eventsCount = count;
-            $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
+            
             $("#nextButton").removeAttr("disabled");
             $("#nextButton").unbind("click");
             $("#nextButton").bind("click", function (e) {
@@ -82,7 +84,6 @@ function getEventsCount(search) {
                 console.log("next");
                 currentPage++;
                 loadEvents(currentPage, search, perPage);
-                $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
                 checkButtons();
             });
             $("#prevButton").unbind("click");
@@ -90,7 +91,6 @@ function getEventsCount(search) {
             $("#prevButton").on("click", function () {
                 currentPage--;
                 loadEvents(currentPage, search, perPage);
-                $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
                 checkButtons();
             });
             checkButtons();
