@@ -3,12 +3,24 @@
     ViewData["Title"] = "Index";
 }
 
-<table>
+
+<div class="row">
+    <div class="input-field col s11">
+        <input id="searchText" type="text" />
+        <label for="searchText">Search</label>
+    </div>
+    <div class="input-field col s1">
+        <button id="searchButton" onclick="searchUpdate()" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">search</i></button>
+        <button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">clear</i></button>
+    </div>
+</div>
+
+<table class="highlight">
     <thead>
         <tr>
-            <td>Name</td>
-            <td>Sport</td>
-            <td>League</td>
+            <th>Name</th>
+            <th>Sport</th>
+            <th>League</th>
         </tr>
     </thead>
     <tbody id="messagesBody"></tbody>
@@ -18,9 +30,6 @@
 <p id="pageCount">Page: ?/?</p>
 <button id="prevButton" disabled>Prev</button>
 <button id="nextButton" disabled>Next</button>
-<input id="searchText" type="text" placeholder="Search..." />
-<button id="searchButton" onclick="searchUpdate()">Search</button>
-<button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();">Clear</button>
 
 @section Scripts{
     <script src="~/js/event.js"></script>
