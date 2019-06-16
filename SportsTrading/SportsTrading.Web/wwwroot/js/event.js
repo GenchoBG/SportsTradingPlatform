@@ -99,7 +99,7 @@ function appendEvents(messages) {
                 .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
                 .append($("<td>").append($('<a>').attr('href', `/Events/Details/${message.id}`).text(message.name)))
-                .append($("<td>").text(message.sportName))
+                .append($("<td>").text(message.date))
                 .append($("<td>").text(message.leagueName)));
     }
 }
