@@ -27,7 +27,7 @@ namespace SportsTrading.Web.Controllers
         }
 
         [HttpGet]
-        [ResponseCache(VaryByQueryKeys = new[] { "search", "page", "eventsPerPage"  }, Duration = 30)]
+        [ResponseCache(VaryByQueryKeys = new[] { "search", "page", "eventsPerPage" }, Duration = 30)]
         public async Task<IActionResult> GetEvents(string search, int page, int eventsPerPage = 20)
         {
             return this.Json(await this.sportsService.GetEvents(page, search, eventsPerPage).ProjectTo<EventListViewModel>().ToListAsync());
@@ -71,6 +71,21 @@ namespace SportsTrading.Web.Controllers
             var model = this.mapper.Map<EventDetailsViewModel>(@event);
 
             return this.View(model);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateOdds(int id, [FromBody]OddsBindingModel model)
+        {
+            var @event = await this.sportsService.GetEventAsync(id);
+
+            if (@event == null)
+            {
+                return this.BadRequest();
+            }
+
+            await this.sportsService.UpdateOddsAsync(id, model.Home, model.Away, model.Draw);
+
+            return this.Ok(new { id, model.Home, model.Away, model.Draw });
         }
     }
 }

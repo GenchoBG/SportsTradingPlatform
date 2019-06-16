@@ -48,8 +48,14 @@ body {
     margin-bottom: 60px;
 }
 
-.page-footer {
-    margin-top: 40px;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 #messagesBody tr:hover {
@@ -86,17 +92,31 @@ i, ion-icon {
     background-color: #5e35b1;
 }
 
+/* Details page style
+-------------------------------------------------- */
 
-body {
+.parent {
     display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+    align-items: center;
 }
 
-main {
-    flex: 1 0 auto;
+.event-name {
+    flex: 1;
 }
 
-#pageNumbers li a {
-    padding: 0 10px;
+.odds-text {
+    margin-left:20%;
+    margin-right:20%;
+}
+
+.event-name, .sport-name {
+    font-size: 35px;
+}
+
+.score, .odds {
+    font-size: 30px;
+}
+
+.event-details {
+    text-align:center;
 }
