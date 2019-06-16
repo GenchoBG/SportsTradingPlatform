@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsTrading.Services", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsTrading.Web", "SportsTrading.Web\SportsTrading.Web.csproj", "{61C1488C-ACA1-4202-8314-F55BFF11CAD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsTrading.Tests", "SportsTrading.Tests\SportsTrading.Tests.csproj", "{A2774A47-B68A-44EF-A952-1778BC582F4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{61C1488C-ACA1-4202-8314-F55BFF11CAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61C1488C-ACA1-4202-8314-F55BFF11CAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61C1488C-ACA1-4202-8314-F55BFF11CAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2774A47-B68A-44EF-A952-1778BC582F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2774A47-B68A-44EF-A952-1778BC582F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2774A47-B68A-44EF-A952-1778BC582F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2774A47-B68A-44EF-A952-1778BC582F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
