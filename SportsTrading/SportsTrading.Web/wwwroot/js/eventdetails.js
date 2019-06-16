@@ -35,7 +35,18 @@ $(document).ready(function () {
         }
         updateOddsFormat();
     });
-    updateOddsFormat();
+
+    let current = getCookie("format");
+
+    if (current == "american") {
+        let away = Number($("#awayOdds").text());
+        let home = Number($("#homeOdds").text());
+        let draw = Number($("#drawOdds").text());
+
+        $("#awayOdds").text(((away - 1) * 100).toFixed(2));
+        $("#homeOdds").text(((home - 1) * 100).toFixed(2));
+        $("#drawOdds").text(((draw - 1) * 100).toFixed(2));
+    }
 });
 
 
