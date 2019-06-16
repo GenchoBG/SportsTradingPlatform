@@ -26,6 +26,7 @@
 }
 
 $(document).ready(function () {
+
     $("#changeFormat").unbind("click");
     $("#changeFormat").bind("click", function () {
         let current = getCookie("format");
@@ -38,6 +39,11 @@ $(document).ready(function () {
     });
 
     let current = getCookie("format");
+    if (current == "american") {
+        $("#formatId").text("A");
+    } else {
+        $("#formatId").text("D");
+    }
 
     if (current == "american") {
         let away = Number($("#awayOdds").text());
@@ -66,6 +72,12 @@ function updateOddsFormat() {
         $("#awayOdds").text(((away / 100) + 1).toFixed(2));
         $("#homeOdds").text(((home / 100) + 1).toFixed(2));
         $("#drawOdds").text(((draw / 100) + 1).toFixed(2));
+    }
+
+    if (current == "american") {
+        $("#formatId").text("A");
+    } else {
+        $("#formatId").text("D");
     }
 }
 
@@ -100,7 +112,8 @@ function formify(id) {
                 draw = val;
             }
 
-            let current = getCookie("format"); if (current == "american") {
+            let current = getCookie("format");
+            if (current == "american") {
                 away = (away / 100) + 1;
                 home = (home / 100) + 1;
                 draw = (draw / 100) + 1;
