@@ -80,7 +80,7 @@ function formify(id) {
     let text = element.text();
 
     element.text("");
-    element.append($("<input>").attr("placeholder", "Edit odds...").attr("type", "number").css("display", "inherit").val(text)).on("keyup", function(event) {
+    element.append($("<input>").attr("placeholder", "Edit odds...").attr("type", "number").css("width", "100px").css("display", "inherit").val(text)).on("keyup", function(event) {
         if (event.key === "Enter") {
             let val = $(`#${id} input`).val();
             console.log(val);
