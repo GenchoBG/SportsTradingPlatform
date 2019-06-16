@@ -76,7 +76,7 @@ function getEventsCount(search) {
         success: function (count) {
             console.log(count);
             eventsCount = count;
-            
+
             $("#nextButton").removeAttr("disabled");
             $("#nextButton").unbind("click");
             $("#nextButton").bind("click", function (e) {
@@ -130,7 +130,7 @@ function createPageButtons() {
         let right = Math.floor(total / 2);
 
         let middleButtons = [];
-        
+
 
         for (let i = currentPage - left; i <= currentPage + right; i++) {
             if (i >= maxButtons / 3 && i < pagesCount - maxButtons / 3) {
@@ -180,8 +180,8 @@ function appendEvents(messages) {
                 .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
                 .append($("<td>").text(dateBeautify(message.date))
-                .append($("<td>").text(message.leagueName))
-            ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
+                    .append($("<td>").text(message.leagueName))
+                ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
     }
 }
 
@@ -213,7 +213,7 @@ function dateBeautify(date) {
     date = date.split('T');
     let [year, month, day] = date[0].split('-');
     let [hour, minutes] = date[1].split(':');
-   
+
     return `${hour}:${minutes} - ${day}/${month}/${year}`;
 }
 

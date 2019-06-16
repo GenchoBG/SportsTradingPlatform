@@ -62,5 +62,19 @@ namespace SportsTrading.Services.Implementations
                 .Include(e => e.League)
                 .FirstOrDefaultAsync(e => e.Id == id);
         }
+
+        public async Task UpdateOddsAsync(int id, decimal home, decimal away, decimal draw)
+        {
+            var @event = await this.GetEventAsync(id);
+
+            if (@event != null)
+            {
+                @event.HomeTeamOdds = home;
+                @event.AwayTeamOdds = away;
+                @event.DrawOdds = draw;
+            }
+
+            await this.db.SaveChangesAsync();
+        }
     }
 }
