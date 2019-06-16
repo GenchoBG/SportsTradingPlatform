@@ -29,6 +29,11 @@ function scrollToPage() {
     };
 }
 
+function scrollArrow() {
+    current_page++;
+    nextPage();
+}
+
 function nextPage() {
     validate();
     scrollTopButton();
