@@ -4,35 +4,42 @@
 }
 <section class="event-details">
     <header>
-        <h1>@Model.SportName</h1>
-        <h2>@Model.Name</h2>
+        <div class="sport-name">@Model.SportName</div>
+        @{
+            string homeTeam = Model.Name.Split(" vs ")[0];
+            string awayTeam = Model.Name.Split(" vs ")[1];
+        }
+        <div class="parent">
+            <div class="event-name">@homeTeam</div>
+            <div class="event-name">vs</div>
+            <div class="event-name">@awayTeam</div>
+        </div>
     </header>
     <main>
         <section class="scoreboard">
-            <div class="emblem">
-                <img src="" alt="">
-            </div>
-            <span>@Model.HomeTeamScore</span>
-            <p>:</p>
-            <span>@Model.AwayTeamScore</span>
-            <div class="emblem">
-                <img src="" alt="">
-            </div>
+            <span class="score">@Model.HomeTeamScore : @Model.AwayTeamScore</span>
         </section>
         <section class="odds">
             <div>
-                <span>@Model.HomeTeamOdds</span>
-                <p>Odds</p>
-                <span>@Model.AwayTeamOdds</span>
+                <span>@Model.HomeTeamOdds</span><span class="odds-text">Odds</span><span>@Model.AwayTeamOdds</span>
             </div>
             <div>
-                <p>Draw Odds</p>
+                <span>Draw Odds</span>
+            </div>
+            <div>
                 <span>@Model.DrawOdds</span>
             </div>
         </section>
-        <div class="ct-chart@{ @Model.Id }" onload="addGraph(@Model.Id, @Model.HomeTeamOdds, @Model.AwayTeamOdds, @Model.DrawOdds);"></div>
+        <div class="ct-chart@{ @Model.Id }"></div>
     </main>
 </section>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+        $(document).ready(function () {
+            addGraph(@Model.Id, @Model.HomeTeamOdds, @Model.DrawOdds, @Model.AwayTeamOdds);
+        });
+</script>
+
 @section Scripts{ 
     <script src="~/js/eventdetails.js"></script>
 }
