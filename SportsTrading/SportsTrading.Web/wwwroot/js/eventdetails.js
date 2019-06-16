@@ -23,3 +23,38 @@
         }
     });
 }
+
+$(document).ready(function () {
+    $("#changeFormat").unbind("click");
+    $("#changeFormat").bind("click", function () {
+        let current = getCookie("format");
+        if (current == "american") {
+            document.cookie = "format=decimal";
+        } else {
+            document.cookie = "format=american";
+        }
+        updateOddsFormat();
+    });
+    updateOddsFormat();
+});
+
+
+
+function updateOddsFormat() {
+    let current = getCookie("format");
+    let away = Number($("#awayOdds").text());
+    let home = Number($("#homeOdds").text());
+    let draw = Number($("#drawOdds").text());
+
+    console.log(draw);
+
+    if (current == "american") {
+        $("#awayOdds").text(((away - 1) * 100).toFixed(2));
+        $("#homeOdds").text(((home - 1) * 100).toFixed(2));
+        $("#drawOdds").text(((draw - 1) * 100).toFixed(2));
+    } else {                                  
+        $("#awayOdds").text(((away / 100) + 1).toFixed(2));
+        $("#homeOdds").text(((home / 100) + 1).toFixed(2));
+        $("#drawOdds").text(((draw / 100) + 1).toFixed(2));
+    }
+}
