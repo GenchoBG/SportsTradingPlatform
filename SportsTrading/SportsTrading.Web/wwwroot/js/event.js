@@ -6,7 +6,32 @@ let search;
 $(window).on("load", function () {
     loadEvents(currentPage, search, perPage);
     getEventsCount(search);
+    loadStatisticks();
 });
+
+function loadStatisticks() {
+    $.ajax({
+        url: '/Events/GetEventsPerLeagueStatistics',
+        type: 'get',
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+
+    $.ajax({
+        url: '/Events/GetEventsPerSportStatistics',
+        type: 'get',
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
 
 function checkButtons() {
     if (currentPage == 0) {
@@ -98,9 +123,9 @@ function appendEvents(messages) {
             .append($('<tr>')
                 .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
-                .append($("<td>").append($('<a>').attr('href', `/Events/Details/${message.id}`).text(message.name)))
                 .append($("<td>").text(message.date))
-                .append($("<td>").text(message.leagueName)));
+                .append($("<td>").text(message.leagueName))
+                .attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
     }
 }
 

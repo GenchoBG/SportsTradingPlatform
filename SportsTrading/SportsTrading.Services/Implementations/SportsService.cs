@@ -17,6 +17,11 @@ namespace SportsTrading.Services.Implementations
             this.db = db;
         }
 
+        public IQueryable<Event> GetEvents()
+        {
+            return this.db.Events.AsQueryable();
+        }
+
         public IQueryable<Event> GetEvents(int page, string search, int eventsPerPage)
         {
             IQueryable<Event> eventsQuery = this.db.Events.AsQueryable();
