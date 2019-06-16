@@ -2,6 +2,10 @@
     scroll-behavior: smooth;
 }
 
+html {
+    height: 90%;
+}
+
 .page-wrapper {
     z-index: 0;
     width: 100%;
@@ -50,3 +54,48 @@
     position: absolute;
     width: 50px;
 }
+
+/*About page*/
+
+h2{
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+p{
+    font-size: 1.5rem;
+}
+
+h2, p{
+    text-align: center;
+}
+
+.icons ul{
+    text-align: center;
+    padding: 8rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.icons ul li{
+    flex: 1 1 10rem;
+    animation: fade-animation ease 1s;
+}
+
+.icons ul li i {
+    font-size: 5rem;
+    color: rgb(94, 53, 177);
+}
+
+@keyframes fade-animation{
+    from {
+        opacity:0;
+        transform:  translate(0px,25px)  ;
+    }
+    to {
+        opacity:1;
+        transform:  translate(0px,0px)  ;
+    }
+}
+
