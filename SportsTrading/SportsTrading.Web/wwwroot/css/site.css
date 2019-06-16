@@ -128,3 +128,9 @@ i, ion-icon {
 .event-details {
     text-align:center;
 }
+
+.pie-chart {
+    max-width: 80vw;
+    height: 41vh;
+    margin-bottom: 1rem;
+}
