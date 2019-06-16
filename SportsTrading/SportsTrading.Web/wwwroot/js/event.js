@@ -176,9 +176,9 @@ function appendEvents(messages) {
             .append($('<tr>')
                 .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
-                .append($("<td>").text(message.date))
+                .append($("<td>").text(dateBeautify(message.date))
                 .append($("<td>").text(message.leagueName))
-                .attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
+            ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
     }
 }
 
@@ -204,6 +204,14 @@ function getIcon(sport) {
             return '<i class="fas fa-gamepad"></i>';
     }
     return 'a';
+}
+
+function dateBeautify(date) {
+    date = date.split('T');
+    let [year, month, day] = date[0].split('-');
+    let [hour, minutes] = date[1].split(':');
+   
+    return `${hour}:${minutes} - ${day}/${month}/${year}`;
 }
 
 function loadEvents(page, search, perPage) {

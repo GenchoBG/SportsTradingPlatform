@@ -2,13 +2,37 @@
 @{
     ViewData["Title"] = "Details";
 }
+<section class="event-details">
+    <header>
+        <h1>@Model.SportName</h1>
+        <h2>@Model.Name</h2>
+    </header>
+    <main>
+        <section class="scoreboard">
+            <div class="emblem">
+                <img src="" alt="">
+            </div>
+            <span>@Model.HomeTeamScore</span>
+            <p>:</p>
+            <span>@Model.AwayTeamScore</span>
+            <div class="emblem">
+                <img src="" alt="">
+            </div>
+        </section>
+        <section class="odds">
+            <div>
+                <span>@Model.HomeTeamOdds</span>
+                <p>Odds</p>
+                <span>@Model.AwayTeamOdds</span>
+            </div>
+            <div>
+                <p>Draw Odds</p>
+                <span>@Model.DrawOdds</span>
+            </div>
+        </section>
+        
+    </main>
+</section>
 
-<h1>@Model.Name</h1>
-<h1>@Model.SportName</h1>
-<h1>@Model.LeagueName</h1>
-<h1>@Model.DrawOdds</h1>
-<h1>@Model.AwayTeamOdds</h1>
-<h1>@Model.HomeTeamOdds</h1>
-<h1>@Model.AwayTeamScore</h1>
-<h1>@Model.HomeTeamScore</h1>
+
 
