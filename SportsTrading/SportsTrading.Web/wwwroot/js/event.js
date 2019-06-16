@@ -19,6 +19,7 @@ function loadStatistics() {
         type: 'get',
         success: function (data) {
             eventsPerLeague = data;
+            loadDataInCard();
         },
         error: function (err) {
             console.log(err);
@@ -30,6 +31,7 @@ function loadStatistics() {
         type: 'get',
         success: function (data) {
             eventsPerSport = data;
+            loadDataInCard();
         },
         error: function (err) {
             console.log(err);
@@ -258,6 +260,18 @@ function loadEvents(page, search, perPage) {
     });
 }
 
-function loadData(dataSource) {
+function loadDataInCard() {
+    let list = $('<ul>');
+    for (let key in eventsPerSport) {
+        list.append($('<li>').text(`${key}: ${eventsPerSport[key]}`));
+    }
 
+    $('#eventsPerSport').append(list);
+
+    list = $('<ul>');
+    for (let key in eventsPerLeague) {
+        list.append($('<li>').text(`${key}: ${eventsPerLeague[key]}`));
+    }
+
+    $('#eventsPerLeague').append(list);
 }
