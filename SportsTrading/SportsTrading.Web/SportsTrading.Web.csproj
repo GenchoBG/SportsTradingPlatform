@@ -13,8 +13,6 @@
     <None Include="sport-events.json" />
     <None Include="wwwroot\lib\chartist\scss\chartist.scss" />
     <None Include="wwwroot\lib\chartist\scss\settings\_chartist-settings.scss" />
-    <None Include="wwwroot\lib\materialize\js\materialize.js" />
-    <None Include="wwwroot\lib\materialize\js\materialize.min.js" />
     <None Include="wwwroot\lib\materialize\LICENSE" />
     <None Include="wwwroot\lib\materialize\README.md" />
   </ItemGroup>

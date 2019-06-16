@@ -30,9 +30,6 @@
                 <span>@Model.DrawOdds</span>
             </div>
         </section>
-        
+        <div class="ct-chart@{ @Model.Id }" onload="addGraph(@Model.Id, @Model.HomeTeamOdds, @Model.AwayTeamOdds, @Model.DrawOdds);"></div>
     </main>
 </section>
-
-
-
