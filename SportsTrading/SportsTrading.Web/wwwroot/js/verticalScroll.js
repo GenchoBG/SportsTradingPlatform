@@ -4,11 +4,15 @@ var menu_is_opened = true;
 var navHeight = 0;
 var scrollTop = false;
 
-$(window).scroll(function() {
-    $(".arrow").css("opacity", 1 - $(window).scrollTop() / 250);
-});
-
 $(window).on("load", function () {
+    $(".fixed-action-btn").append(`<ul>
+                                        <li>
+                                            <a id="scrollToTop" class="btn-floating waves-effect waves-light light-blue darken-1" onclick="scrollToHome()" style="opacity: 1">
+                                                <i class="material-icons">keyboard_arrow_up</i>
+                                            </a>
+                                        </li>
+                                    </ul>`);
+
     navHeight = $("nav").height();
     var height = $(window).height() - navHeight;
     $(".page-wrapper").css("height", height);
@@ -67,13 +71,14 @@ function scrollTopButton() {
 
 function scrollToHome() {
     $(".page").unbind();
+    current_page = 1;
+
     console.log("top");
     $('.page-wrapper').animate({
-        scrollTop: $('.page-wrapper').offset().top
-    }, 800, 'swing', function () {
+        scrollTop: $("#page" + current_page).offset().top
+    }, 1000, 'swing', function () {
         $(".page").bind("mousewheel", scrollToPage());
         });
 
-    current_page = 1;
     scrollTopButton();
 }

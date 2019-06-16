@@ -70,24 +70,53 @@ i, ion-icon {
     color: #5e35b1;
 }
 
-    .tabs.tabs-deep-purple .tab a:active {
-        color: #5e35b1;
-    }
+.tabs.tabs-deep-purple .tab a:active {
+    color: #5e35b1;
+}
 
-    .tabs.tabs-deep-purple .tab a:hover {
-        color: rgba(94, 53, 177, 0.5);
-    }
+.tabs.tabs-deep-purple .tab a:hover {
+    color: rgba(94, 53, 177, 0.5);
+}
 
-    .tabs.tabs-deep-purple .tab a.active {
-        color: rgba(94, 53, 177, 1);
-        background-color: rgba(94, 53, 177, 0.1) !important;
-    }
+.tabs.tabs-deep-purple .tab a.active {
+    color: rgba(94, 53, 177, 1);
+    background-color: rgba(94, 53, 177, 0.1) !important;
+}
 
-    .tabs.tabs-deep-purple .tab a:focus.active {
-        color: rgba(94, 53, 177, 1);
-        background-color: rgba(94, 53, 177, 0.1) !important;
-    }
+.tabs.tabs-deep-purple .tab a:focus.active {
+    color: rgba(94, 53, 177, 1);
+    background-color: rgba(94, 53, 177, 0.1) !important;
+}
 
 .tabs.tabs-deep-purple .indicator {
     background-color: #5e35b1;
+}
+
+/* Details page style
+-------------------------------------------------- */
+
+.parent {
+    display: flex;
+    align-items: center;
+}
+
+.event-name {
+    flex: 1;
+}
+
+.odds-text {
+    margin-left:20%;
+    margin-right:20%;
+}
+
+.event-name, .sport-name {
+    font-size: 35px;
+}
+
+.score, .odds {
+    font-size: 30px;
+}
+
+.event-details {
+    text-align:center;
 }
