@@ -1,4 +1,5 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿using System.Linq;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsTrading.Services.Interfaces;
@@ -35,6 +36,22 @@ namespace SportsTrading.Web.Controllers
         public async Task<IActionResult> GetEventsCount(string search)
         {
             return this.Json(await this.sportsService.GetCountAsync(search));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEventsPerLeagueStatistics()
+        {
+            return this.Json(await this.sportsService.GetEvents()
+                                    .GroupBy(e => e.League.Name)
+                                    .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetEventsPerSportStatistics()
+        {
+            return this.Json(await this.sportsService.GetEvents()
+                .GroupBy(e => e.Sport.Name)
+                .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
         }
 
         [HttpGet]

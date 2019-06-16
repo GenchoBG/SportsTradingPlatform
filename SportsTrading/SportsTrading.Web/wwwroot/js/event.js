@@ -6,7 +6,32 @@ let search;
 $(window).on("load", function () {
     loadEvents(currentPage, search, perPage);
     getEventsCount(search);
+    loadStatisticks();
 });
+
+function loadStatisticks() {
+    $.ajax({
+        url: '/Events/GetEventsPerLeagueStatistics',
+        type: 'get',
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+
+    $.ajax({
+        url: '/Events/GetEventsPerSportStatistics',
+        type: 'get',
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
 
 function checkButtons() {
     if (currentPage == 0) {
