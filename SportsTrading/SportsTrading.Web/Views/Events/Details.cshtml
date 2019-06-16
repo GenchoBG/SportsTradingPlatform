@@ -2,45 +2,71 @@
 @{
     ViewData["Title"] = "Details";
 }
-<section class="event-details">
-    <header>
-        <div class="sport-name">@Model.SportName</div>
+<div class="container">
+    <h1 class="center-align">@Model.SportName</h1>
+    <hr />
+    <div class="row">
         @{
             string homeTeam = Model.Name.Split(" vs ")[0];
             string awayTeam = Model.Name.Split(" vs ")[1];
         }
-        <div class="parent">
-            <div class="event-name">@homeTeam</div>
-            <div class="event-name">vs</div>
-            <div class="event-name">@awayTeam</div>
-        </div>
-    </header>
-    <main>
-        <section class="scoreboard">
-            <span class="score">@Model.HomeTeamScore : @Model.AwayTeamScore</span>
-        </section>
-        <section class="odds">
-            <div>
-                <span id="homeOdds">@Model.HomeTeamOdds</span><span class="odds-text">Odds</span><span id="awayOdds">@Model.AwayTeamOdds</span>
-            </div>
-            <div>
-                <span>Draw Odds</span>
-            </div>
-            <div>
-                <span id="drawOdds">@Model.DrawOdds</span>
-            </div>
-        </section>
-        <div class="ct-chart@{ @Model.Id }"></div>
-    </main>
-</section>
-<div id="eventId" hidden>@Model.Id</div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-        $(document).ready(function () {
-            addGraph(@Model.Id, @Model.HomeTeamOdds, @Model.DrawOdds, @Model.AwayTeamOdds);
-        });
-</script>
 
-@section Scripts{ 
+        <div class="col s3">
+            <div><h4>@homeTeam</h4></div>
+        </div>
+
+        <div class="col s6 center-align">
+            <div class="row">
+                <div class="col s5">
+                    <h1 style="font-size: 120pt">@Model.HomeTeamScore</h1>
+                </div>
+                <div class="col s2">
+                    <h1 style="font-size: 100pt">:</h1>
+                </div>
+                <div class="col s5">
+                    <h1 style="font-size: 120pt">@Model.AwayTeamScore</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s5">
+                    <h5 class="deep-purple-text darken-1">@Model.HomeTeamOdds</h5>
+                </div>
+                <div class="col s2">
+                    <h5>Odds</h5>
+                </div>
+                <div class="col s5">
+                    <h5 class="deep-purple-text darken-1">@Model.AwayTeamOdds</h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h5>Draw Odds</h5>
+                    <span>@Model.DrawOdds</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a class="waves-effect waves-light btn modal-trigger deep-purple darken-4" href="#statsChart" onclick="addGraph(@Model.HomeTeamOdds, @Model.DrawOdds, @Model.AwayTeamOdds)">Stats</a>
+                    <div id="statsChart" class="modal">
+                        <div class="modal-content">
+                            <div class="ct-chart" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s3">
+            <div><h4>@awayTeam</h4></div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+@section Scripts{
     <script src="~/js/eventdetails.js"></script>
 }

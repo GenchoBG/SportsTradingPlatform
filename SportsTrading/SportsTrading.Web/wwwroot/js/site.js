@@ -4,10 +4,8 @@
 // Write your JavaScript code.
 $(document).ready(function () {
     $('.sidenav').sidenav();
-});
-
-$(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
+    $('.modal').modal();
 
     $("#changeFormat").bind("click", function () {
         let current = getCookie("format");

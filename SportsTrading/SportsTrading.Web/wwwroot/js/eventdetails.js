@@ -14,12 +14,12 @@
             away: away,
             draw: draw
         }),
-        success: function (data) {
+        success: function(data) {
             console.log(data);
             console.log("updated.");
-            location.reload(); 
+            location.reload();
         },
-        error: function (err) {
+        error: function(err) {
             console.log(err);
         }
     });
@@ -107,5 +107,3 @@ function formify(id) {
         }
     });
 }
-
-
