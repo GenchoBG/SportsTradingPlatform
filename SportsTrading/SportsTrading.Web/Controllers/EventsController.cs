@@ -27,18 +27,21 @@ namespace SportsTrading.Web.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(VaryByQueryKeys = new[] { "search", "page", "eventsPerPage"  }, Duration = 30)]
         public async Task<IActionResult> GetEvents(string search, int page, int eventsPerPage = 20)
         {
             return this.Json(await this.sportsService.GetEvents(page, search, eventsPerPage).ProjectTo<EventListViewModel>().ToListAsync());
         }
 
         [HttpGet]
+        [ResponseCache(VaryByQueryKeys = new[] { "search" }, Duration = 30)]
         public async Task<IActionResult> GetEventsCount(string search)
         {
             return this.Json(await this.sportsService.GetCountAsync(search));
         }
 
         [HttpGet]
+        [ResponseCache(Duration = 30)]
         public async Task<IActionResult> GetEventsPerLeagueStatistics()
         {
             return this.Json(await this.sportsService.GetEvents()
@@ -47,6 +50,7 @@ namespace SportsTrading.Web.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(Duration = 30)]
         public async Task<IActionResult> GetEventsPerSportStatistics()
         {
             return this.Json(await this.sportsService.GetEvents()
