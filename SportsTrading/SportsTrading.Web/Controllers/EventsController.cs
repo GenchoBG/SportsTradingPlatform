@@ -52,7 +52,7 @@ namespace SportsTrading.Web.Controllers
         {
             return this.Json(await this.sportsService.GetEvents()
                 .GroupBy(e => e.League.Name)
-                .OrderByDescending(g => g.Key)
+                .OrderBy(g => g.Key)
                 .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
         }
 
@@ -62,7 +62,7 @@ namespace SportsTrading.Web.Controllers
         {
             return this.Json(await this.sportsService.GetEvents()
                 .GroupBy(e => e.Sport.Name)
-                .OrderByDescending(g => g.Key)
+                .OrderBy(g => g.Key)
                 .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
         }
 
