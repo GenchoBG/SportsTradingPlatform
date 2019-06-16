@@ -3,18 +3,21 @@ let perPage = 5;
 let currentPage = 0;
 let search;
 
+let eventsPerLeague, eventsPerSport;
+
 $(window).on("load", function () {
     loadEvents(currentPage, search, perPage);
     getEventsCount(search);
-    loadStatisticks();
+    loadStatistics();
+    $('.tabs').tabs();
 });
 
-function loadStatisticks() {
+function loadStatistics() {
     $.ajax({
         url: '/Events/GetEventsPerLeagueStatistics',
         type: 'get',
         success: function (data) {
-            console.log(data);
+            eventsPerLeague = data;
         },
         error: function (err) {
             console.log(err);
@@ -25,7 +28,7 @@ function loadStatisticks() {
         url: '/Events/GetEventsPerSportStatistics',
         type: 'get',
         success: function (data) {
-            console.log(data);
+            eventsPerSport = data;
         },
         error: function (err) {
             console.log(err);
@@ -169,4 +172,8 @@ function loadEvents(page, search, perPage) {
             console.log(err);
         }
     });
+}
+
+function loadData(dataSource) {
+
 }
