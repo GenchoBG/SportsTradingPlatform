@@ -6,22 +6,3 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-
-<div class="ct-chart"></div>
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/chartist/chartist.min.js"></script>
-<script>
-    new Chartist.Bar('.ct-chart', {
-        labels: ['Home Team Odds', 'Away Team Odds', 'Draw Odds'],
-        series: [
-            [0.6, 0.2, 0.5]
-        ]
-    }, {
-            axisY: {
-                labelInterpolationFnc: function (value) {
-                    return value + '%'
-                }
-            }
-        });
-</script>
