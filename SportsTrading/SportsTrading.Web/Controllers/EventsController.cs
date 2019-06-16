@@ -4,16 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using SportsTrading.Services.Interfaces;
 using SportsTrading.Web.Models;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace SportsTrading.Web.Controllers
 {
     public class EventsController : Controller
     {
         private readonly ISportsService sportsService;
+        private readonly IMapper mapper;
 
-        public EventsController(ISportsService sportsService)
+        public EventsController(ISportsService sportsService, IMapper mapper)
         {
             this.sportsService = sportsService;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -31,7 +34,17 @@ namespace SportsTrading.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetEventsCount(string search)
         {
-            return this.Json(await this.sportsService.GetCount(search));
+            return this.Json(await this.sportsService.GetCountAsync(search));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var @event = await this.sportsService.GetEventAsync(id);
+
+            var model = this.mapper.Map<EventDetailsViewModel>(@event);
+
+            return this.View(model);
         }
     }
 }

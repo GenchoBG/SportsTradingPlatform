@@ -9,13 +9,14 @@
         <link type="text/css" rel="stylesheet" href="~/lib/materialize/css/materialize.min.css" media="screen,projection" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" 
+        <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
               asp-fallback-href="~/lib/materialize/css/materialize.min.css">
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="~/lib/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="~/lib/chartist/chartist.min.css">
 </head>
 <body>
     <header>
@@ -68,6 +69,8 @@
 <script type="text/javascript" src="~/lib/materialize/js/materialize.min.js"></script>
 <script src="https://kit.fontawesome.com/9b8ef0615f.js"></script>
 <script src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons.js"></script>
+    <script type="text/javascript" src="~/lib/materialize/js/materialize.min.js"></script>
+    <script src="~/lib/chartist/chartist.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

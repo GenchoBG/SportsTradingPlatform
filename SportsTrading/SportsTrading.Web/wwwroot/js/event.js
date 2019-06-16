@@ -1,5 +1,5 @@
 ﻿let eventsCount;
-let perPage = 20;
+let perPage = 5;
 let currentPage = 0;
 let search;
 
@@ -98,6 +98,7 @@ function appendEvents(messages) {
             .append($('<tr>')
                 .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
+                .append($("<td>").append($('<a>').attr('href', `/Events/Details/${message.id}`).text(message.name)))
                 .append($("<td>").text(message.sportName))
                 .append($("<td>").text(message.leagueName)));
     }
