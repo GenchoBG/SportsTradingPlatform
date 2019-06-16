@@ -49,8 +49,6 @@ $(document).ready(function () {
     }
 });
 
-
-
 function updateOddsFormat() {
     let current = getCookie("format");
     let away = Number($("#awayOdds").text());
@@ -68,4 +66,13 @@ function updateOddsFormat() {
         $("#homeOdds").text(((home / 100) + 1).toFixed(2));
         $("#drawOdds").text(((draw / 100) + 1).toFixed(2));
     }
+}
+
+function formify(id) {
+    let element = $(`#${id}`);
+
+    let text = element.text();
+
+    element.text("");
+    element.append($("<input>").attr("placeholder", "Edit odds...").attr("type", "number").css("display", "inherit").val(text));
 }
