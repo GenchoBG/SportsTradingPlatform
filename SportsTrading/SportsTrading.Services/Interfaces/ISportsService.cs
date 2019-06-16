@@ -10,5 +10,6 @@ namespace SportsTrading.Services.Interfaces
         IQueryable<Event> GetEvents(int page, string search, int eventsPerPage);
         Task<int> GetCountAsync(string search);
         Task<Event> GetEventAsync(int id);
+        Task UpdateOddsAsync(int id, decimal home, decimal away, decimal draw);
     }
 }
