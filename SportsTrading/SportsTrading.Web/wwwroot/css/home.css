@@ -55,7 +55,7 @@
 
 h2{
     margin-bottom: 3rem;
-    margin-top: 0;
+    margin-top: 1rem;
 }
 
 p{
@@ -68,12 +68,14 @@ h2, p{
 
 .icons ul{
     text-align: center;
-    padding-top: 8rem;
+    padding: 8rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
 .icons ul li{
-    display: inline-block;
-    padding: 3rem 8rem;
+    flex: 1 1 10rem;
     animation: fade-animation ease 1s;
 }
 
