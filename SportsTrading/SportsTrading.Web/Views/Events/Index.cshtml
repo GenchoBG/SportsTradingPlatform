@@ -5,11 +5,11 @@
 
 
 <div class="row">
-    <div class="input-field col s11">
+    <div class="input-field col m11">
         <input id="searchText" type="text" />
         <label for="searchText">Search</label>
     </div>
-    <div class="input-field col s1">
+    <div class="input-field col m1">
         <button id="searchButton" onclick="searchUpdate()" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">search</i></button>
         <button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">clear</i></button>
     </div>
@@ -18,8 +18,9 @@
 <table class="highlight">
     <thead>
         <tr>
+            <th><i class="fas fa-running"></i></th>
             <th>Name</th>
-            <th>Sport</th>
+            <th>Date</th>
             <th>League</th>
         </tr>
     </thead>
