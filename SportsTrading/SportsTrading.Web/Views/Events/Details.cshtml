@@ -21,18 +21,19 @@
         </section>
         <section class="odds">
             <div>
-                <span id="homeOdds" onclick="formify('homeOdds')">@Model.HomeTeamOdds</span><span class="odds-text">Odds</span><span id="awayOdds" onclick="formify('awayOdds')">@Model.AwayTeamOdds</span>
+                <span id="homeOdds">@Model.HomeTeamOdds</span><span class="odds-text">Odds</span><span id="awayOdds">@Model.AwayTeamOdds</span>
             </div>
             <div>
                 <span>Draw Odds</span>
             </div>
             <div>
-                <span id="drawOdds" onclick="formify('drawOdds')">@Model.DrawOdds</span>
+                <span id="drawOdds">@Model.DrawOdds</span>
             </div>
         </section>
         <div class="ct-chart@{ @Model.Id }"></div>
     </main>
 </section>
+<div id="eventId" hidden>@Model.Id</div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
         $(document).ready(function () {
