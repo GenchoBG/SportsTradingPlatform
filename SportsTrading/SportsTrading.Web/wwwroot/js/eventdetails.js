@@ -89,6 +89,7 @@ function formify(id) {
             let home = Number($("#homeOdds").text());
             let draw = Number($("#drawOdds").text());
 
+
             if (Number.isNaN(away) || away == 0) {
                 away = val;
             }
@@ -99,10 +100,17 @@ function formify(id) {
                 draw = val;
             }
 
+            let current = getCookie("format"); if (current == "american") {
+                away = (away / 100) + 1;
+                home = (home / 100) + 1;
+                draw = (draw / 100) + 1;
+            } 
+
             console.log(away);
             console.log(home);
             console.log(draw);
 
+            console.log($("#eventId").text());
             updateOdds($("#eventId").text(), home, away, draw);
         }
     });
