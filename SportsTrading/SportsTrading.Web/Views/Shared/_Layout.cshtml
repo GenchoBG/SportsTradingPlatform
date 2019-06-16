@@ -17,37 +17,37 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/chartist/chartist.min.css">
-    <link rel="stylesheet" href="~/css/event-details.css" />
 </head>
 <body>
     <header>
-        <nav>
-            <div class="nav-wrapper deep-purple darken-1">
-                <a href="#" class="brand-logo right">Logo</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-controller="Events" asp-action="Index">Events</a></li>
-                </ul>
-            </div>
-        </nav>
-        <ul class="sidenav" id="mobile-demo">
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li><a asp-controller="Events" asp-action="Index">Events</a></li>
-
-    </ul>
-</header>
-<div class="container">
-    <partial name="_CookieConsentPartial" />
-    <main role="main">
-        <div class="fixed-action-btn" id="changeFormat">
-            <a class="btn-floating btn-large deep-purple darken-1">
-                <i class="large material-icons">mode_edit</i>
-            </a>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper deep-purple darken-1">
+                    <a href="#!" class="brand-logo right">Logo</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="Events" asp-action="Index">Events</a></li>
+                    </ul>
+                </div>
+            </nav>
         </div>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Events" asp-action="Index">Events</a></li>
+            </ul>
+    </header>
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main">
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large deep-purple darken-1">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+            </div>
 
-        @RenderBody()
-    </main>
+            @RenderBody()
+        </main>
     </div>
 
     <environment include="Development">
@@ -70,7 +70,9 @@
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons/ionicons.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/chartist/chartist.min.js"></script>
-    <script src="~/js/details.js"></script>
+<script src="~/js/details.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="~/js/pie-chart-drawer.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
