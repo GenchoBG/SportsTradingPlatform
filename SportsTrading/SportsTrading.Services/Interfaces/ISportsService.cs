@@ -7,6 +7,7 @@ namespace SportsTrading.Services.Interfaces
     public interface ISportsService
     {
         IQueryable<Event> GetEvents(int page, string search, int eventsPerPage);
-        Task<int> GetCount(string search);
+        Task<int> GetCountAsync(string search);
+        Task<Event> GetEventAsync(int id);
     }
 }
