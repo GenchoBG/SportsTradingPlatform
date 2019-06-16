@@ -6,6 +6,17 @@ html {
     height: 90%;
 }
 
+table, tr, td {
+    border: none;
+}
+
+.child {
+    flex: 1;
+}
+.name-child {
+    flex: 3;
+}
+
 .page-wrapper {
     z-index: 0;
     width: 100%;
@@ -59,7 +70,6 @@ html {
 
 h2{
     margin-bottom: 3rem;
-    margin-top: 1rem;
 }
 
 p{
@@ -96,6 +106,9 @@ h2, p{
 
 .icons ul li i {
     font-size: 5rem;
+}
+
+.child > a, li > i {
     color: rgb(94, 53, 177);
 }
 
@@ -112,6 +125,10 @@ h2, p{
 
 /*Contacts Page*/
 .page:nth-child(2){
+    text-align: left;
+}
+
+.page > h1 {
     text-align: center;
 }
 
@@ -129,14 +146,14 @@ h2, p{
     
 }
 
-    .page:nth-child(2) ul li:not(:last-child) {
-        margin-right: 1rem;
-    }
+page:nth-child(2) ul li:not(:last-child) {
+    margin-right: 1rem;
+}
 
 .page:nth-child(2) ul li a {
     color: rgb(94, 53, 177);
 }
 
-    .page:nth-child(2) ul li a i {
-        font-size: 2rem;
-    }
+.page:nth-child(2) ul li a i {
+    font-size: 2rem;
+}
