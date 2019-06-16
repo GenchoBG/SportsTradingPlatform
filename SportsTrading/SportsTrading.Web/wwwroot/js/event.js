@@ -74,6 +74,15 @@ function searchUpdate() {
     });
 }
 
+$("#searchText").on("keypress", function (event) {
+    if (event.which === 13) {
+        if (!event.shiftKey) {
+            $("#searchButton").click();
+        }
+        event.preventDefault();
+    }
+});
+
 function getEventsCount(search) {
     $.ajax({
         url: '/Events/GetEventsCount' + getUrlAttributes(null, search, null),
