@@ -17,6 +17,11 @@ namespace SportsTrading.Services.Implementations
             this.db = db;
         }
 
+        public IQueryable<Event> GetEvents()
+        {
+            return this.db.Events.AsQueryable();
+        }
+
         public IQueryable<Event> GetEvents(int page, string search, int eventsPerPage)
         {
             IQueryable<Event> eventsQuery = this.db.Events.AsQueryable();
@@ -36,7 +41,7 @@ namespace SportsTrading.Services.Implementations
             return eventsQuery;
         }
 
-        public async Task<int> GetCount(string search)
+        public async Task<int> GetCountAsync(string search)
         {
             if (string.IsNullOrEmpty(search))
             {
@@ -48,6 +53,14 @@ namespace SportsTrading.Services.Implementations
                                  || e.Sport.Name.Contains(search, StringComparison.InvariantCultureIgnoreCase)
                                  || e.League.Name.Contains(search, StringComparison.InvariantCultureIgnoreCase));
 
+        }
+
+        public async Task<Event> GetEventAsync(int id)
+        {
+            return await this.db.Events
+                .Include(e => e.Sport)
+                .Include(e => e.League)
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
     }
 }

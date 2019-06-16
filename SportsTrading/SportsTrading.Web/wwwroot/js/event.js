@@ -1,14 +1,45 @@
 ﻿let eventsCount;
-let perPage = 20;
+let perPage = 5;
 let currentPage = 0;
 let search;
+const maxButtons = 9;
+
+let eventsPerLeague, eventsPerSport;
 
 $(window).on("load", function () {
     loadEvents(currentPage, search, perPage);
     getEventsCount(search);
+    loadStatistics();
+    $('.tabs').tabs();
 });
 
+function loadStatistics() {
+    $.ajax({
+        url: '/Events/GetEventsPerLeagueStatistics',
+        type: 'get',
+        success: function (data) {
+            eventsPerLeague = data;
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+
+    $.ajax({
+        url: '/Events/GetEventsPerSportStatistics',
+        type: 'get',
+        success: function (data) {
+            eventsPerSport = data;
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
 function checkButtons() {
+    $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(eventsCount / perPage)}`);
+
     if (currentPage == 0) {
         $("#prevButton").attr("disabled", "disabled");
     } else {
@@ -20,6 +51,8 @@ function checkButtons() {
     } else {
         $("#nextButton").removeAttr("disabled");
     }
+
+    createPageButtons();
 }
 
 function searchUpdate() {
@@ -31,7 +64,7 @@ function searchUpdate() {
         loadEvents(currentPage, search, perPage);
         getEventsCount(search);
         resolve();
-    }).then(function() {
+    }).then(function () {
         $("#searchButton").removeAttr("disabled");
     });
 }
@@ -43,7 +76,7 @@ function getEventsCount(search) {
         success: function (count) {
             console.log(count);
             eventsCount = count;
-            $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
+            
             $("#nextButton").removeAttr("disabled");
             $("#nextButton").unbind("click");
             $("#nextButton").bind("click", function (e) {
@@ -51,7 +84,6 @@ function getEventsCount(search) {
                 console.log("next");
                 currentPage++;
                 loadEvents(currentPage, search, perPage);
-                $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
                 checkButtons();
             });
             $("#prevButton").unbind("click");
@@ -59,8 +91,7 @@ function getEventsCount(search) {
             $("#prevButton").on("click", function () {
                 currentPage--;
                 loadEvents(currentPage, search, perPage);
-                $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
-                checkButtons();                
+                checkButtons();
             });
             checkButtons();
         },
@@ -68,6 +99,56 @@ function getEventsCount(search) {
             console.log(err);
         }
     });
+}
+
+function createPageButtons() {
+    $("#pageNumbers").html('');
+    let buttons = [];
+    let pagesCount = Math.ceil(eventsCount / perPage);
+    for (let i = 0; i < pagesCount; i++) {
+        buttons.push($(`<button>`).text(i + 1).on("click", function () {
+            currentPage = i;
+            loadEvents(currentPage, search, perPage);
+            checkButtons();
+        }));
+    }
+    console.log(buttons);
+
+    if (buttons.length <= maxButtons) {
+        for (var button of buttons) {
+            $("#pageNumbers").append(button);
+        }
+    } else {
+        for (var i = 0; i < maxButtons / 3; i++) {
+            $("#pageNumbers").append(buttons[i]);
+        }
+
+        $("#pageNumbers").append($('<span>').text('...'));
+
+        let total = maxButtons / 3;
+        let left = Math.floor(total / 2);
+        let right = Math.floor(total / 2);
+
+        let middleButtons = [];
+        
+
+        for (let i = currentPage - left; i <= currentPage + right; i++) {
+            if (i >= maxButtons / 3 && i < pagesCount - maxButtons / 3) {
+                middleButtons.push(buttons[i]);
+            }
+        }
+
+        for (let button of middleButtons) {
+            $("#pageNumbers").append(button);
+        }
+        if (middleButtons.length > 0) {
+            $("#pageNumbers").append($('<span>').text('...'));
+        }
+
+        for (let i = pagesCount - maxButtons / 3; i < pagesCount; i++) {
+            $("#pageNumbers").append(buttons[i]);
+        }
+    }
 }
 
 function getUrlAttributes(page, search, perPage) {
@@ -93,12 +174,47 @@ function getUrlAttributes(page, search, perPage) {
 function appendEvents(messages) {
     $("#messagesBody").html("");
     for (let message of messages) {
+        let icon = getIcon(message.sportName);
         $("#messagesBody")
             .append($('<tr>')
+                .append($("<td>").html(icon))
                 .append($("<td>").text(message.name))
-                .append($("<td>").text(message.sportName))
-                .append($("<td>").text(message.leagueName)));
+                .append($("<td>").text(dateBeautify(message.date))
+                .append($("<td>").text(message.leagueName))
+            ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
     }
+}
+
+function getIcon(sport) {
+    switch (sport) {
+        case 'Soccer':
+            return '<i class="far fa-futbol"></i>';
+        case 'BasketBall':
+            return '<i class="fas fa-basketball-ball"></i>';
+        case 'Tennis':
+            return '<ion-icon name="tennisball"></ion-icon>';
+        case 'Baseball':
+            return '<i class="fas fa-baseball-ball"></i>';
+        case 'Ice Hockey':
+            return '<i class="fas fa-hockey-puck"></i>';
+        case 'Golf':
+            return '<i class="fas fa-golf-ball"></i>';
+        case 'Volleyball':
+            return '<i class="fas fa-volleyball-ball"></i>';
+        case 'Table Tennis':
+            return '<i class="fas fa-table-tennis"></i>';
+        case 'E-Sports':
+            return '<i class="fas fa-gamepad"></i>';
+    }
+    return 'a';
+}
+
+function dateBeautify(date) {
+    date = date.split('T');
+    let [year, month, day] = date[0].split('-');
+    let [hour, minutes] = date[1].split(':');
+   
+    return `${hour}:${minutes} - ${day}/${month}/${year}`;
 }
 
 function loadEvents(page, search, perPage) {
@@ -117,4 +233,8 @@ function loadEvents(page, search, perPage) {
             console.log(err);
         }
     });
+}
+
+function loadData(dataSource) {
+
 }

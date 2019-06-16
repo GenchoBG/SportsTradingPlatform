@@ -3,23 +3,59 @@
     ViewData["Title"] = "Index";
 }
 
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Sport</td>
-            <td>League</td>
-        </tr>
-    </thead>
-    <tbody id="messagesBody"></tbody>
-</table>
+
+<div class="row">
+    <div class="col m8">
+        <div class="input-field col m10">
+            <input id="searchText" type="text" />
+            <label for="searchText">Search</label>
+        </div>
+        <div class="input-field col m2">
+            <button id="searchButton" onclick="searchUpdate()" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">search</i></button>
+            <button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">clear</i></button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col m8">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-running"></i></th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>League</th>
+                </tr>
+            </thead>
+            <tbody id="messagesBody"></tbody>
+        </table>
+    </div>
+    <div class="col m4">
+        <div class="row">
+            <div class="col s12 ">
+                <div class="card">
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width tabs-deep-purple">
+                            <li class="tab"><a class="active" href="#eventsPerSport">Group by sport</a></li>
+                            <li class="tab"><a href="#eventsPerLeague">Group by league</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-content">
+                        <div id="eventsPerSport">Test 1</div>
+                        <div id="eventsPerLeague">Test 2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <br />
 <p id="pageCount">Page: ?/?</p>
 <button id="prevButton" disabled>Prev</button>
+<div id="pageNumbers" style="display: inline"></div>
 <button id="nextButton" disabled>Next</button>
-<input id="searchText" type="text" />
-<button id="searchButton" onclick="searchUpdate()">Search</button>
 
 @section Scripts{
     <script src="~/js/event.js"></script>

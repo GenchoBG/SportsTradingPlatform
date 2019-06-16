@@ -1,0 +1,38 @@
+﻿@model EventDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<section class="event-details">
+    <header>
+        <h1>@Model.SportName</h1>
+        <h2>@Model.Name</h2>
+    </header>
+    <main>
+        <section class="scoreboard">
+            <div class="emblem">
+                <img src="" alt="">
+            </div>
+            <span>@Model.HomeTeamScore</span>
+            <p>:</p>
+            <span>@Model.AwayTeamScore</span>
+            <div class="emblem">
+                <img src="" alt="">
+            </div>
+        </section>
+        <section class="odds">
+            <div>
+                <span>@Model.HomeTeamOdds</span>
+                <p>Odds</p>
+                <span>@Model.AwayTeamOdds</span>
+            </div>
+            <div>
+                <p>Draw Odds</p>
+                <span>@Model.DrawOdds</span>
+            </div>
+        </section>
+        
+    </main>
+</section>
+
+
+
