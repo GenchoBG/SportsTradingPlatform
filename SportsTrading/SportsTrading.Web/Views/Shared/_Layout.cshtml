@@ -71,6 +71,12 @@
     <script nomodule="" src="https://unpkg.com/ionicons@4.5.9-1/dist/ionicons/ionicons.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/chartist/chartist.min.js"></script>
+    <script src="~/js/details.js"></script>
+    <script>
+        $(document).ready(function () {
+            addGraph(@Model.Id, @Model.HomeTeamOdds, @Model.AwayTeamOdds, @Model.DrawOdds);
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
