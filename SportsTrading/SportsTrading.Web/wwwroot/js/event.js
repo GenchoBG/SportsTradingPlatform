@@ -1,5 +1,5 @@
 ﻿let eventsCount;
-let perPage = 20;
+let perPage = 5;
 let currentPage = 0;
 let search;
 
