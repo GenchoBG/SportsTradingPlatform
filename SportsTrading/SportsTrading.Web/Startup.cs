@@ -79,7 +79,7 @@ namespace SportsTrading.Web
                         MaxAge = TimeSpan.FromMinutes(30)
                     };
                 context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
-                    new string[] { "Accept-Encoding" };
+                    new[] { "Accept-Encoding" };
 
                 await next();
             });

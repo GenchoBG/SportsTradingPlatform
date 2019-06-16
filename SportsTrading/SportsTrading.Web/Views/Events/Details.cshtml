@@ -33,11 +33,13 @@
         <div class="ct-chart@{ @Model.Id }"></div>
     </main>
 </section>
-
-
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
         $(document).ready(function () {
             addGraph(@Model.Id, @Model.HomeTeamOdds, @Model.DrawOdds, @Model.AwayTeamOdds);
         });
 </script>
+
+@section Scripts{ 
+    <script src="~/js/eventdetails.js"></script>
+}
