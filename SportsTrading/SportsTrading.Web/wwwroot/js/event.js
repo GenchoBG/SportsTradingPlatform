@@ -2,6 +2,7 @@
 let perPage = 5;
 let currentPage = 0;
 let search;
+const maxButtons = 9;
 
 $(window).on("load", function () {
     loadEvents(currentPage, search, perPage);
@@ -45,6 +46,8 @@ function checkButtons() {
     } else {
         $("#nextButton").removeAttr("disabled");
     }
+
+    createPageButtons();
 }
 
 function searchUpdate() {
@@ -56,7 +59,7 @@ function searchUpdate() {
         loadEvents(currentPage, search, perPage);
         getEventsCount(search);
         resolve();
-    }).then(function() {
+    }).then(function () {
         $("#searchButton").removeAttr("disabled");
     });
 }
@@ -85,7 +88,7 @@ function getEventsCount(search) {
                 currentPage--;
                 loadEvents(currentPage, search, perPage);
                 $("#pageCount").text(`Page ${currentPage + 1}/${Math.ceil(count / perPage)}`);
-                checkButtons();                
+                checkButtons();
             });
             checkButtons();
         },
@@ -93,6 +96,56 @@ function getEventsCount(search) {
             console.log(err);
         }
     });
+}
+
+function createPageButtons() {
+    $("#pageNumbers").html('');
+    let buttons = [];
+    let pagesCount = Math.ceil(eventsCount / perPage);
+    for (let i = 0; i < pagesCount; i++) {
+        buttons.push($(`<button>`).text(i + 1).on("click", function () {
+            currentPage = i;
+            loadEvents(currentPage, search, perPage);
+            checkButtons();
+        }));
+    }
+    console.log(buttons);
+
+    if (buttons.length <= maxButtons) {
+        for (var button of buttons) {
+            $("#pageNumbers").append(button);
+        }
+    } else {
+        for (var i = 0; i < maxButtons / 3; i++) {
+            $("#pageNumbers").append(buttons[i]);
+        }
+
+        $("#pageNumbers").append($('<span>').text('...'));
+
+        let total = maxButtons / 3;
+        let left = Math.floor(total / 2);
+        let right = Math.floor(total / 2);
+
+        let middleButtons = [];
+        
+
+        for (let i = currentPage - left; i <= currentPage + right; i++) {
+            if (i >= maxButtons / 3 && i < pagesCount - maxButtons / 3) {
+                middleButtons.push(buttons[i]);
+            }
+        }
+
+        for (let button of middleButtons) {
+            $("#pageNumbers").append(button);
+        }
+        if (middleButtons.length > 0) {
+            $("#pageNumbers").append($('<span>').text('...'));
+        }
+
+        for (let i = pagesCount - maxButtons / 3; i < pagesCount; i++) {
+            $("#pageNumbers").append(buttons[i]);
+        }
+    }
 }
 
 function getUrlAttributes(page, search, perPage) {
