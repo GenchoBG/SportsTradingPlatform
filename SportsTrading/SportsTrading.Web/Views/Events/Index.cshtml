@@ -5,27 +5,54 @@
 
 
 <div class="row">
-    <div class="input-field col m11">
-        <input id="searchText" type="text" />
-        <label for="searchText">Search</label>
-    </div>
-    <div class="input-field col m1">
-        <button id="searchButton" onclick="searchUpdate()" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">search</i></button>
-        <button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">clear</i></button>
+    <div class="col m8">
+        <div class="input-field col m10">
+            <input id="searchText" type="text" />
+            <label for="searchText">Search</label>
+        </div>
+        <div class="input-field col m2">
+            <button id="searchButton" onclick="searchUpdate()" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">search</i></button>
+            <button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();" class="btn-floating waves-effect waves-light deep-purple darken-1"><i class="material-icons right">clear</i></button>
+        </div>
     </div>
 </div>
 
-<table class="highlight">
-    <thead>
-        <tr>
-            <th><i class="fas fa-running"></i></th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>League</th>
-        </tr>
-    </thead>
-    <tbody id="messagesBody"></tbody>
-</table>
+<div class="row">
+    <div class="col m8">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-running"></i></th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>League</th>
+                </tr>
+            </thead>
+            <tbody id="messagesBody"></tbody>
+        </table>
+    </div>
+    <div class="col m4">
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="images/sample-1.jpg">
+                        <span class="card-title">Card Title</span>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <br />
 <p id="pageCount">Page: ?/?</p>
