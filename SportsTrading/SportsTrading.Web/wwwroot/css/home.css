@@ -110,3 +110,33 @@ h2, p{
     }
 }
 
+/*Contacts Page*/
+.page:nth-child(2){
+    text-align: center;
+}
+
+    .page:nth-child(2) p{
+        margin-right: 2rem;
+    }
+
+    .page:nth-child(2) p,
+    .page:nth-child(2) ul {
+        display: inline-block;
+    }
+
+.page:nth-child(2) ul li{
+    display: inline-block;
+    
+}
+
+    .page:nth-child(2) ul li:not(:last-child) {
+        margin-right: 1rem;
+    }
+
+.page:nth-child(2) ul li a {
+    color: rgb(94, 53, 177);
+}
+
+    .page:nth-child(2) ul li a i {
+        font-size: 2rem;
+    }
