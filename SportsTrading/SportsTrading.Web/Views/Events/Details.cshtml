@@ -30,20 +30,20 @@
 
             <div class="row">
                 <div class="col s5">
-                    <h5 class="deep-purple-text darken-1">@Model.HomeTeamOdds</h5>
+                    <h5 class="deep-purple-text darken-1" id="homeOdds">@Model.HomeTeamOdds</h5>
                 </div>
                 <div class="col s2">
                     <h5>Odds</h5>
                 </div>
                 <div class="col s5">
-                    <h5 class="deep-purple-text darken-1">@Model.AwayTeamOdds</h5>
+                    <h5 class="deep-purple-text darken-1" id="awayOdds">@Model.AwayTeamOdds</h5>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col s12 center-align">
                     <h5>Draw Odds</h5>
-                    <span>@Model.DrawOdds</span>
+                    <span id="drawOdds">@Model.DrawOdds</span>
                 </div>
             </div>
             
@@ -62,8 +62,11 @@
         <div class="col s3">
             <div><h4>@awayTeam</h4></div>
         </div>
+        
     </div>
 </div>
+
+<div id="eventId">@Model.Id</div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
 
