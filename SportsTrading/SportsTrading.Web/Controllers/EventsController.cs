@@ -42,6 +42,11 @@ namespace SportsTrading.Web.Controllers
         {
             var @event = await this.sportsService.GetEventAsync(id);
 
+            if (@event == null)
+            {
+                return this.BadRequest();
+            }
+
             var model = this.mapper.Map<EventDetailsViewModel>(@event);
 
             return this.View(model);
