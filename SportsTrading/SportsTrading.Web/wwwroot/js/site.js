@@ -4,10 +4,31 @@
 // Write your JavaScript code.
 $(document).ready(function () {
     $('.sidenav').sidenav();
-});
-
-$(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
+    $('.modal').modal();
+
+    $("#changeFormat").bind("click", function () {
+        let current = getCookie("format");
+        if (current == "american") {
+            document.cookie = "format=decimal";
+        } else {
+            document.cookie = "format=american";
+        }
+    });
 });
 
-$('.modal').modal();
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}

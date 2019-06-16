@@ -7,6 +7,14 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+* {
+    font-family: "PT Sans";
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "PT Serif";
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

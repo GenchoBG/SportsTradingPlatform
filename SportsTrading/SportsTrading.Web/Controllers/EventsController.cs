@@ -64,6 +64,11 @@ namespace SportsTrading.Web.Controllers
                 .ToDictionaryAsync(grouping => grouping.Key, grouping => grouping.Count()));
         }
 
+        public IActionResult Stats()
+        {
+            return this.View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
