@@ -125,7 +125,7 @@ function appendEvents(messages) {
                 .append($("<td>").text(message.name))
                 .append($("<td>").text(dateBeautify(message.date))
                 .append($("<td>").text(message.leagueName))
-                .attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";")));
+            ).attr('onclick', "window.location=" + `"/Events/Details/${message.id}"` + ";"));
     }
 }
 
