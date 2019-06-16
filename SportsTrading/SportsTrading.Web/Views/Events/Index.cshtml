@@ -18,8 +18,9 @@
 <p id="pageCount">Page: ?/?</p>
 <button id="prevButton" disabled>Prev</button>
 <button id="nextButton" disabled>Next</button>
-<input id="searchText" type="text" />
+<input id="searchText" type="text" placeholder="Search..." />
 <button id="searchButton" onclick="searchUpdate()">Search</button>
+<button id="searchButton" onclick="$('#searchText').val(''); searchUpdate();">Clear</button>
 
 @section Scripts{
     <script src="~/js/event.js"></script>

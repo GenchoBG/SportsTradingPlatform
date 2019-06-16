@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using SportsTrading.Data.Models;
 using SportsTrading.Web.Infrastructure.Mapper;
 
@@ -13,6 +14,8 @@ namespace SportsTrading.Web.Models
         public string LeagueName { get; set; }
 
         public string SportName { get; set; }
+
+        public DateTime Date { get; set; }
 
         public void ConfigureMapping(Profile profile)
         {
